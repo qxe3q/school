@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет - TopLanguagesSchool</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">TopLanguages<span>School</span></a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="courses.html">Курсы</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="form.html" class="nav-btn">Записаться</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="dashboard-section">
+        <div class="container">
+            <div id="notLoggedBox" class="auth-required" style="display:none;">
+                <h2>Требуется вход</h2>
+                <p>Чтобы попасть в личный кабинет, войдите в систему.</p>
+                <a href="login.html" class="btn">Войти</a>
+            </div>
+
+            <div id="dashboardBox" style="display:none;">
+                <div class="dashboard-header">
+                    <div>
+                        <h2 id="welcomeTitle">Личный кабинет</h2>
+                        <p class="dashboard-subtitle" id="welcomeSubtitle"></p>
+                    </div>
+                    <button class="btn-outline" id="logoutBtn">Выйти</button>
+                </div>
+
+                <div class="dashboard-tabs" id="dashboardTabs"></div>
+
+                <div id="dashboardPanels">
+
+                    <div class="dash-panel" id="panel-requests" style="display: none;">
+                        <h3>Заявки с сайта</h3>
+                        <div id="adminRequestsList"></div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-create-student" style="display: none;">
+                        <h3>Создать ученика вручную</h3>
+                        <form id="createStudentForm" class="inline-form">
+                            <input type="text" name="name" placeholder="Имя и фамилия" required>
+                            <input type="text" name="login" placeholder="Логин" required>
+                            <select name="language" required>
+                                <option value="" disabled selected hidden>Язык</option>
+                                <option value="English">Английский</option>
+                                <option value="中文">Китайский</option>
+                                <option value="Français">Французский</option>
+                                <option value="Deutsch">Немецкий</option>
+                                <option value="Español">Испанский</option>
+                            </select>
+                            <button type="submit" class="btn">Создать</button>
+                        </form>
+                        <p class="form-msg" id="createStudentMsg"></p>
+                    </div>
+
+                    <div class="dash-panel" id="panel-students" style="display: none;">
+                        <h3>Все ученики</h3>
+                        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;">
+                            <span style="color:#64748b; font-size:14px;">Список всех учеников школы</span>
+                            <button class="btn btn-danger btn-sm" id="clearAllStudentsBtn">Очистить учеников</button>
+                        </div>
+                        <div id="adminStudentsList"></div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-teachers" style="display: none;">
+                        <h3>Преподаватели</h3>
+                        <form id="createTeacherForm" class="inline-form">
+                            <input type="text" name="name" placeholder="Имя и фамилия" required>
+                            <input type="text" name="login" placeholder="Логин" required>
+                            <select name="language" required>
+                                <option value="" disabled selected hidden>Язык</option>
+                                <option value="English">Английский</option>
+                                <option value="中文">Китайский</option>
+                                <option value="Français">Французский</option>
+                                <option value="Deutsch">Немецкий</option>
+                                <option value="Español">Испанский</option>
+                            </select>
+                            <button type="submit" class="btn">Добавить</button>
+                        </form>
+                        <p class="form-msg" id="createTeacherMsg"></p>
+                        <div id="adminTeachersList"></div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-schedule" style="display: none;"></div>
+
+                    <div class="dash-panel" id="panel-student-schedule" style="display: none;">
+                        <h3>Моё расписание</h3>
+                        <div id="studentScheduleList"></div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-teacher-students" style="display: none;">
+                        <h3>Мои ученики</h3>
+                        <div id="teacherStudentsList"></div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-grades" style="display: none;">
+                        <h3>Оценки</h3>
+                        <div id="gradesView"></div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-homework" style="display: none;">
+                        <h3>Домашние задания</h3>
+                        <div id="homeworkView"></div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-data" style="display: none;">
+                        <h3>Данные сайта</h3>
+                        <div class="dash-form-box">
+                            <h4>Сброс</h4>
+                            <p class="hint-text">Удалит заявки, учеников, расписание, оценки, задания и сообщения и вернёт демо-пользователей.</p>
+                            <button class="btn btn-sm btn-danger" id="resetDataBtn" type="button">Сбросить все данные</button>
+                        </div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-messages" style="display: none;">
+                        <h3>Сообщения</h3>
+                        <div id="messagesView"></div>
+                    </div>
+
+                    <div class="dash-panel" id="panel-profile" style="display: none;">
+                        <h3>Профиль</h3>
+                        <div class="profile-card" id="profileView"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-block">
+                    <div class="logo">TopLanguages<span>School</span></div>
+                    <p>Школа иностранных языков: английский, немецкий, французский, испанский, китайский. Группы и индивидуальные занятия онлайн и офлайн.</p>
+                </div>
+                <div class="footer-block">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="courses.html">Курсы</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+                <div class="footer-block contacts-block">
+                    <h3>Контакты</h3>
+                    <p>г. Москва, ул. Тверская, 7</p>
+                    <p>+7 (495) 123-45-67</p>
+                    <p>toplanguagesschool@mail.ru</p>
+                    <div class="footer-socials">
+                        <a href="https://vk.com" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">VK</a>
+                        <a href="https://web.max.ru/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="MAX">MAX</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year">2026</span> TopLanguagesSchool. Учебный проект.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/common.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

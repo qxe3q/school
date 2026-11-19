@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на урок - TopLanguagesSchool</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .form-subtitle {
+            text-align: center;
+            color: #555;
+            font-size: 18px;
+            margin-top: -30px;
+            margin-bottom: 40px;
+            line-height: 1.5;
+        }
+        .format-selection {
+            margin-bottom: 25px;
+            padding: 5px;
+        }
+        .format-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #222;
+        }
+        .radio-group {
+            display: flex;
+            gap: 30px;
+        }
+        .radio-option {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            font-size: 16px;
+            user-select: none;
+        }
+        .radio-option input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            margin-bottom: 0;
+            accent-color: #7c3aed;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="index.html">TopLanguages<span>School</span></a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="courses.html">Курсы</a></li>
+                       <li><a href="about.html">О нас</a></li>
+                       <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="form.html" class="nav-btn">Записаться</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="form-section page-form-section">
+        <div class="container">
+            <h2>Запись на пробный урок</h2>
+            <p class="form-subtitle">Заполните форму - мы свяжемся с вами для подбора группы.</p> 
+            
+            <form id="requestForm">
+                <input type="text" id="reqName" placeholder="Ваше имя" required>
+                <input type="tel" id="reqPhone" placeholder="Телефон" required>
+                
+                <select id="reqLanguage" required>
+                    <option value="" disabled selected hidden>Выберите язык...</option>
+                    <option value="Английский">Английский язык</option>
+                    <option value="Китайский">Китайский язык</option>
+                    <option value="Французский">Французский язык</option>
+                    <option value="Немецкий">Немецкий язык</option>
+                    <option value="Испанский">Испанский язык</option>
+                </select>
+
+                <div class="format-selection">
+                    <span class="format-label">Удобный формат обучения:</span>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="reqFormat" value="online" checked>
+                            Онлайн (через Zoom)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="reqFormat" value="offline">
+                            Офлайн (в учебном центре)
+                        </label>
+                    </div>
+                </div>
+
+                <label class="consent">
+                    <input type="checkbox" id="reqConsent" required>
+                    <span>Я согласен(на) на обработку персональных данных и ознакомлен(а) с <a href="privacy.html" target="_blank">политикой конфиденциальности</a></span>
+                </label>
+
+                <button type="submit">Отправить заявку</button>
+                <p class="form-msg" id="requestMsg"></p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-block">
+                    <div class="logo">
+                        TopLanguages<span>School</span>
+                    </div>
+                    <p>Школа иностранных языков: английский, немецкий, французский, испанский, китайский. Группы и индивидуальные занятия онлайн и офлайн.</p>
+                </div>
+                <div class="footer-block">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="courses.html">Курсы</a></li>
+                        <li><a href="about.html">О нас</a></li>
+                       <li><a href="contacts.html">Контакты</a></li>
+                    </ul>
+                </div>
+               <div class="footer-block contacts-block">
+                    <h3>Контакты</h3>
+                    <p>г. Москва, ул. Тверская, 7</p>
+                    <p>+7 (495) 123-45-67</p>
+                    <p>toplanguagesschool@mail.ru</p>
+                    <div class="footer-socials">
+                        <a href="https://vk.com" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">VK</a>
+                        <a href="https://web.max.ru/" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="MAX">MAX</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© <span id="year">2026</span> TopLanguagesSchool. Учебный проект.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/common.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>
